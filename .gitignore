@@ -1,0 +1,5 @@
+node_modules/
+projects/
+tmp_uploads/
+.env
+*.log
