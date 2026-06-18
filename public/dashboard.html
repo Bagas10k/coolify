@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coolify Dashboard</title>
+  <meta name="description" content="Manage and deploy your personal web projects from one place" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- Particle background -->
+  <canvas id="particles"></canvas>
+
+  <!-- ───── Navbar ───── -->
+  <nav class="navbar glass" id="navbar">
+    <div class="nav-brand" style="cursor: pointer;" onclick="window.location.href='/'">
+      <span class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <span class="logo-text gradient-text">Coolify</span>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-wrap">
+        <svg class="search-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="search-input" type="text" placeholder="Search projects..." />
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button id="btn-upload-nav" class="btn btn-primary btn-sm" aria-label="Upload project">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>New Project</span>
+      </button>
+      <button id="btn-logout" class="btn btn-ghost btn-sm" aria-label="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ───── Main Content ───── -->
+  <main class="main-content">
+
+    <!-- Hero / Stats Bar -->
+    <section class="hero-section">
+      <div class="hero-left">
+        <h1 class="hero-title">Manage <span class="gradient-text">Projects</span></h1>
+        <p class="hero-sub">Upload new static or PHP projects. They will be immediately hosted and displayed on your public portfolio page!</p>
+        <div class="stats-row">
+          <div class="stat-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span id="stat-total">0</span> Projects
+          </div>
+          <div class="stat-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <span id="stat-storage">0 MB</span> Used
+          </div>
+          <div class="stat-chip stat-online">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Server Online
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="mascot.png" alt="Coolify mascot" class="hero-mascot" />
+      </div>
+    </section>
+
+    <!-- Upload Drop Zone -->
+    <section class="upload-section">
+      <div id="drop-zone" class="drop-zone glass" role="button" tabindex="0" aria-label="Upload project zone">
+        <div class="drop-inner">
+          <div class="drop-icon-wrap">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          </div>
+          <div class="drop-text">
+            <p class="drop-title">Drop your project <strong>.zip</strong> here</p>
+            <p class="drop-sub">or <span class="link-btn" id="browse-btn">browse files</span></p>
+          </div>
+          <div class="drop-types">
+            <span class="type-badge type-static">Static</span>
+            <span class="type-badge type-php">PHP</span>
+          </div>
+        </div>
+        <input id="file-input" type="file" accept=".zip" hidden />
+
+        <!-- Upload progress (shown during upload) -->
+        <div id="upload-progress" class="upload-progress hidden">
+          <div class="progress-info">
+            <span id="progress-filename">uploading...</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Grid -->
+    <section class="projects-section">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="static">Static</button>
+          <button class="filter-tab" data-filter="php">PHP</button>
+        </div>
+      </div>
+
+      <div id="project-grid" class="project-grid">
+        <!-- Cards injected by app.js -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state hidden">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <p>No projects yet. Upload your first project!</p>
+      </div>
+
+      <!-- Loading state -->
+      <div id="loading-state" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading projects...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───── Delete Confirm Modal ───── -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal glass">
+      <div class="modal-icon modal-icon-danger">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      </div>
+      <h3 class="modal-title">Delete Project</h3>
+      <p class="modal-body">Are you sure you want to delete <strong id="modal-project-name"></strong>? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn btn-ghost">Cancel</button>
+        <button id="modal-confirm" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Toast Container ───── -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="particles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

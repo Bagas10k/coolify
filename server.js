@@ -39,17 +39,21 @@ app.use(express.urlencoded({ extended: true }));
 // ─── Auth Routes ───────────────────────────────────────────────────────────
 registerAuthRoutes(app);
 
-// ─── Public assets (CSS, JS, images) — no auth needed so login page renders ──
-// Only index.html is protected; everything else in /public is safe to expose.
+// ─── Public assets (CSS, JS, images) — no auth needed so landing page renders
 const PUBLIC_DIR = path.resolve('./public');
 app.use('/style.css',   express.static(path.join(PUBLIC_DIR, 'style.css')));
 app.use('/app.js',      express.static(path.join(PUBLIC_DIR, 'app.js')));
 app.use('/particles.js',express.static(path.join(PUBLIC_DIR, 'particles.js')));
 app.use('/mascot.png',  express.static(path.join(PUBLIC_DIR, 'mascot.png')));
 
-// ─── Dashboard root — protected ───────────────────────────────────────────
-app.get('/', requireAuth, (req, res) => {
+// ─── Public Portfolio page (Landing Page) ──────────────────────────────────
+app.get('/', (req, res) => {
   res.sendFile('index.html', { root: PUBLIC_DIR });
+});
+
+// ─── Dashboard manager page (Protected) ─────────────────────────────────────
+app.get('/dashboard', requireAuth, (req, res) => {
+  res.sendFile('dashboard.html', { root: PUBLIC_DIR });
 });
 
 // ─── Multer Upload ─────────────────────────────────────────────────────────
@@ -118,6 +122,31 @@ app.get('/api/projects', requireAuth, (req, res) => {
       type: meta.type || detectType(dir),
       uploadedAt: meta.uploadedAt || null,
       size: dirSize(dir),
+      url: `/p/${name}/`,
+    };
+  });
+
+  res.json(projects);
+});
+
+// ─── API: List projects publicly (for Portfolio) ───────────────────────────
+app.get('/api/public-projects', (req, res) => {
+  if (!fs.existsSync(PROJECTS_DIR)) return res.json([]);
+
+  const names = fs.readdirSync(PROJECTS_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name);
+
+  const projects = names.map(name => {
+    const dir = path.join(PROJECTS_DIR, name);
+    const metaFile = path.join(dir, '.coolify-meta.json');
+    let meta = {};
+    try { meta = JSON.parse(fs.readFileSync(metaFile, 'utf8')); } catch (_) {}
+
+    return {
+      name,
+      type: meta.type || detectType(dir),
+      uploadedAt: meta.uploadedAt || null,
       url: `/p/${name}/`,
     };
   });

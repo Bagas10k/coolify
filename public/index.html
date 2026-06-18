@@ -3,153 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coolify Dashboard</title>
-  <meta name="description" content="Manage and deploy your personal web projects from one place" />
+  <title>Bagas | Personal Web Hub & Portfolio</title>
+  <meta name="description" content="Welcome to my personal workspace. Explore my projects and deployed web applications." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="dashboard-page">
+<body class="portfolio-page">
 
-  <!-- Particle background -->
+  <!-- Particle animation canvas -->
   <canvas id="particles"></canvas>
 
   <!-- ───── Navbar ───── -->
   <nav class="navbar glass" id="navbar">
-    <div class="nav-brand">
+    <div class="nav-brand" style="cursor: pointer;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
       <span class="logo-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </span>
-      <span class="logo-text gradient-text">Coolify</span>
+      <span class="logo-text gradient-text">Bagas10k</span>
     </div>
 
-    <div class="nav-center">
-      <div class="search-wrap">
-        <svg class="search-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="search-input" type="text" placeholder="Search projects..." />
-      </div>
+    <div class="nav-center portfolio-nav">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#projects" class="nav-link">My Projects</a>
     </div>
 
     <div class="nav-actions">
-      <button id="btn-upload-nav" class="btn btn-primary btn-sm" aria-label="Upload project">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        <span>New Project</span>
-      </button>
-      <button id="btn-logout" class="btn btn-ghost btn-sm" aria-label="Logout">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        <span>Logout</span>
-      </button>
+      <a href="/dashboard" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="/dashboard" class="btn btn-primary btn-sm">
+        <span>Go to Dashboard</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </nav>
 
-  <!-- ───── Main Content ───── -->
-  <main class="main-content">
-
-    <!-- Hero / Stats Bar -->
-    <section class="hero-section">
-      <div class="hero-left">
-        <h1 class="hero-title">Your Projects <span class="gradient-text">Hub</span></h1>
-        <p class="hero-sub">Upload, manage, and access your web projects — all from one place.</p>
-        <div class="stats-row">
-          <div class="stat-chip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-            <span id="stat-total">0</span> Projects
-          </div>
-          <div class="stat-chip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            <span id="stat-storage">0 MB</span> Used
-          </div>
-          <div class="stat-chip stat-online">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Server Online
-          </div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <img src="mascot.png" alt="Coolify mascot" class="hero-mascot" />
-      </div>
-    </section>
-
-    <!-- Upload Drop Zone -->
-    <section class="upload-section">
-      <div id="drop-zone" class="drop-zone glass" role="button" tabindex="0" aria-label="Upload project zone">
-        <div class="drop-inner">
-          <div class="drop-icon-wrap">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-          </div>
-          <div class="drop-text">
-            <p class="drop-title">Drop your project <strong>.zip</strong> here</p>
-            <p class="drop-sub">or <span class="link-btn" id="browse-btn">browse files</span></p>
-          </div>
-          <div class="drop-types">
-            <span class="type-badge type-static">Static</span>
-            <span class="type-badge type-php">PHP</span>
-          </div>
-        </div>
-        <input id="file-input" type="file" accept=".zip" hidden />
-
-        <!-- Upload progress (shown during upload) -->
-        <div id="upload-progress" class="upload-progress hidden">
-          <div class="progress-info">
-            <span id="progress-filename">uploading...</span>
-            <span id="progress-pct">0%</span>
-          </div>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar-fill" id="progress-bar"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Project Grid -->
-    <section class="projects-section">
-      <div class="section-header">
-        <h2 class="section-title">Projects</h2>
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="static">Static</button>
-          <button class="filter-tab" data-filter="php">PHP</button>
-        </div>
-      </div>
-
-      <div id="project-grid" class="project-grid">
-        <!-- Cards injected by app.js -->
-      </div>
-
-      <!-- Empty state -->
-      <div id="empty-state" class="empty-state hidden">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        <p>No projects yet. Upload your first project!</p>
-      </div>
-
-      <!-- Loading state -->
-      <div id="loading-state" class="loading-state">
-        <div class="spinner"></div>
-        <p>Loading projects...</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- ───── Delete Confirm Modal ───── -->
-  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
-    <div class="modal glass">
-      <div class="modal-icon modal-icon-danger">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-      </div>
-      <h3 class="modal-title">Delete Project</h3>
-      <p class="modal-body">Are you sure you want to delete <strong id="modal-project-name"></strong>? This action cannot be undone.</p>
-      <div class="modal-actions">
-        <button id="modal-cancel" class="btn btn-ghost">Cancel</button>
-        <button id="modal-confirm" class="btn btn-danger">Delete</button>
+  <!-- ───── Hero Section ───── -->
+  <section class="portfolio-hero" id="hero">
+    <div class="hero-content">
+      <div class="badge-accent">✨ Web Developer Workspace</div>
+      <h1 class="hero-title">
+        The best place to <br/>
+        <span class="text-underline-wrap">explore</span> and <span class="highlight-yellow">play</span> <br/>
+        with my web apps
+      </h1>
+      <p class="hero-subtitle">
+        Welcome to my personal cloud server. I build clean web interfaces, try out interactive projects, and host them right here without terminal deployments.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Projects</span>
+        </a>
+        <a href="#features" class="btn btn-ghost">
+          <span>What I Do</span>
+        </a>
       </div>
     </div>
-  </div>
+    
+    <div class="hero-visual">
+      <!-- 3D Mascot -->
+      <div class="mascot-container-floating">
+        <img src="mascot.png" alt="Happy Robot Mascot" class="mascot-img-large" />
+      </div>
+    </div>
+  </section>
 
-  <!-- ───── Toast Container ───── -->
-  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <!-- ───── Features Section ───── -->
+  <section class="portfolio-features" id="features">
+    <div class="section-intro">
+      <h2 class="section-title-alt">Our interactive <span class="gradient-text">features</span></h2>
+      <p class="section-subtitle-alt">Here is how my personal environment serves web projects behind the scenes.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1: Lavender Theme -->
+      <div class="feature-card f-card-purple">
+        <div class="f-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5-1.5.8-3 .8-4.5V3h-1c-1.5 0-3 .3-4.5.8L12 6.2 7.6 3.8C6.1 3.3 4.6 3 3.1 3H2v1c0 1.5.3 3 .8 4.5L6.2 12l-3.4 4.4c-.5 1.5-.8 3-.8 4.5v1h1c1.5 0 3-.3 4.5-.8L12 17.8l4.4 3.4c1.5.5 3 .8 4.5.8h1v-1c0-1.5-.3-3-.8-4.5L17.8 12l3.4-4.4z"/></svg>
+        </div>
+        <h3>Static Sandbox</h3>
+        <p>Supports compiled React apps, static HTML/CSS, and modern frontend outputs built instantly.</p>
+        <div class="f-card-badge">HTML / CSS / JS</div>
+      </div>
+
+      <!-- Card 2: Deep Blue/Violet Theme -->
+      <div class="feature-card f-card-blue">
+        <div class="f-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3>PHP Engine</h3>
+        <p>Auto-spawns independent server instances in the background for executing script databases and dynamic backends.</p>
+        <div class="f-card-badge">PHP-CLI Proxy</div>
+      </div>
+
+      <!-- Card 3: Warm Yellow Theme -->
+      <div class="feature-card f-card-yellow">
+        <div class="f-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Zip Deployment</h3>
+        <p>No terminal commands. Simply upload any package from the dashboard, extract, and check the live project.</p>
+        <div class="f-card-badge">Instant Serve</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Projects Grid Section ───── -->
+  <section class="portfolio-projects" id="projects">
+    <div class="section-intro">
+      <h2 class="section-title-alt">Explore my <span class="gradient-text">deployed apps</span></h2>
+      <p class="section-subtitle-alt">These applications are hosted directly on this server. Click to open each in a new tab.</p>
+    </div>
+
+    <div class="projects-grid-wrap">
+      <div id="public-project-grid" class="project-grid">
+        <!-- Cards loaded dynamically from public API -->
+      </div>
+
+      <div id="public-empty-state" class="empty-state hidden">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <p>No projects have been uploaded yet. Log in to upload your first application!</p>
+      </div>
+
+      <div id="public-loading-state" class="loading-state">
+        <div class="spinner"></div>
+        <p>Fetching active projects...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Footer ───── -->
+  <footer class="portfolio-footer">
+    <p>© 2026 Bagas10k. Created with custom Node.js Coolify dashboard.</p>
+  </footer>
 
   <script src="particles.js"></script>
-  <script src="app.js"></script>
+  <script>
+    // Initialize background particles
+    initParticles('particles');
+
+    // Fetch and render public projects on portfolio page
+    async function loadPublicProjects() {
+      const grid = document.getElementById('public-project-grid');
+      const empty = document.getElementById('public-empty-state');
+      const loading = document.getElementById('public-loading-state');
+
+      try {
+        const res = await fetch('/api/public-projects');
+        if (!res.ok) throw new Error('Load failed');
+        const projects = await res.json();
+
+        loading.classList.add('hidden');
+
+        if (projects.length === 0) {
+          empty.classList.remove('hidden');
+          grid.innerHTML = '';
+          return;
+        }
+
+        empty.classList.add('hidden');
+        grid.innerHTML = '';
+
+        projects.forEach((p, index) => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.style.animationDelay = `${index * 0.08}s`;
+
+          const iconSvg = p.type === 'php'
+            ? `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
+            : `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+
+          const date = p.uploadedAt
+            ? new Date(p.uploadedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+            : 'Static App';
+
+          card.innerHTML = `
+            <div class="card-header">
+              <div class="card-icon card-icon-${p.type}">${iconSvg}</div>
+              <span class="card-badge badge-${p.type}">${p.type.toUpperCase()}</span>
+            </div>
+            <div class="card-name">${escapeHtml(p.name)}</div>
+            <div class="card-meta">
+              <span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Deployed on ${date}
+              </span>
+            </div>
+            <div class="card-actions" style="margin-top: 1.5rem;">
+              <a href="${p.url}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Launch Project
+              </a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+      } catch (err) {
+        loading.classList.add('hidden');
+        empty.classList.remove('hidden');
+        empty.querySelector('p').textContent = 'Unable to fetch deployed applications.';
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+      }[c]));
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPublicProjects);
+  </script>
 </body>
 </html>

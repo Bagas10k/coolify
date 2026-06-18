@@ -24,7 +24,7 @@ function registerAuthRoutes(app) {
   // Login page — served from public/login.html via static middleware,
   // but we need a named route for redirect logic.
   app.get('/login', (req, res) => {
-    if (req.session && req.session.authenticated) return res.redirect('/');
+    if (req.session && req.session.authenticated) return res.redirect('/dashboard');
     res.sendFile('login.html', { root: './public' });
   });
 
