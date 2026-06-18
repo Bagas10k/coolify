@@ -256,10 +256,11 @@ body {
 
 .hero-right { flex-shrink: 0; }
 .hero-mascot {
-  width: 180px;
-  height: 180px;
+  width: 280px;
+  height: 280px;
   object-fit: contain;
-  filter: drop-shadow(0 0 28px rgba(59,130,246,.5));
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 36px rgba(59,130,246,.65)) brightness(1.05);
   animation: float 4s ease-in-out infinite;
 }
 
@@ -565,10 +566,11 @@ body {
 }
 .mascot-wrap { text-align: center; }
 .mascot-img {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(59,130,246,.6));
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 28px rgba(59,130,246,.7)) brightness(1.05);
   animation: float 3.5s ease-in-out infinite;
 }
 
