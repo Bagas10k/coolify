@@ -581,3 +581,46 @@ body {
     padding-bottom: 4rem;
   }
 }
+
+/* ─── Premium Fade and Spacing Enhancements ─────────── */
+.btn-component {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.025em;
+}
+.btn-component:hover {
+  filter: brightness(1.05);
+}
+
+.card-component {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), 
+              box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              border-color 0.4s ease, 
+              opacity 0.5s ease-in-out;
+  animation: fadeUpIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Adjust heading padding & gaps inside portfolio */
+.portfolio-hero, .features-section, .projects-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}
+
+h2, h3 {
+  letter-spacing: -0.015em;
+}
+
+p {
+  letter-spacing: 0.01em;
+}
+
