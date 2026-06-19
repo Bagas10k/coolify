@@ -25,7 +25,7 @@ function registerAuthRoutes(app) {
   // but we need a named route for redirect logic.
   app.get('/login', (req, res) => {
     if (req.session && req.session.authenticated) return res.redirect('/dashboard');
-    res.sendFile('login.html', { root: './public' });
+    res.sendFile('index.html', { root: './public' });
   });
 
   app.post('/api/login', express_json_middleware, (req, res) => {

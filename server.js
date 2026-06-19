@@ -39,21 +39,21 @@ app.use(express.urlencoded({ extended: true }));
 // ─── Auth Routes ───────────────────────────────────────────────────────────
 registerAuthRoutes(app);
 
-// ─── Public assets (CSS, JS, images) — no auth needed so landing page renders
+// ─── Public assets (images & particles) ───
 const PUBLIC_DIR = path.resolve('./public');
-app.use('/style.css',   express.static(path.join(PUBLIC_DIR, 'style.css')));
-app.use('/app.js',      express.static(path.join(PUBLIC_DIR, 'app.js')));
-app.use('/particles.js',express.static(path.join(PUBLIC_DIR, 'particles.js')));
-app.use('/mascot.png',  express.static(path.join(PUBLIC_DIR, 'mascot.png')));
+app.use(express.static(PUBLIC_DIR));
 
-// ─── Public Portfolio page (Landing Page) ──────────────────────────────────
+// ─── React App Pages Routing ───────────────────────────────────────────────
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: PUBLIC_DIR });
 });
 
-// ─── Dashboard manager page (Protected) ─────────────────────────────────────
-app.get('/dashboard', requireAuth, (req, res) => {
-  res.sendFile('dashboard.html', { root: PUBLIC_DIR });
+app.get('/dashboard', (req, res) => {
+  res.sendFile('index.html', { root: PUBLIC_DIR });
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile('index.html', { root: PUBLIC_DIR });
 });
 
 // ─── Multer Upload ─────────────────────────────────────────────────────────
