@@ -80,7 +80,7 @@ export default function App() {
         </a>
 
         {page === 'portfolio' && (
-          <div className="nav-center">
+          <div className="nav-center portfolio-nav">
             <a href="#home" className="nav-link" onClick={(e) => {
               e.preventDefault();
               document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
@@ -88,15 +88,30 @@ export default function App() {
             <a href="#about" className="nav-link" onClick={(e) => {
               e.preventDefault();
               document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-            }}>Features</a>
-            <a href="#apps" className="nav-link" onClick={(e) => {
+            }}>About</a>
+            <a href="#projects" className="nav-link" onClick={(e) => {
               e.preventDefault();
-              document.getElementById('apps').scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
             }}>Projects</a>
+            <a href="#services" className="nav-link" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+            }}>Services</a>
+            <a href="#contact" className="nav-link" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }}>Contact</a>
           </div>
         )}
 
         <div className="nav-actions">
+          {page === 'portfolio' && (
+            <a href="/cv.pdf" download="Bagas_CV.pdf" className="hidden sm:inline-block">
+              <Button variant="ghost" size="sm" className="bg-amber-500/10 text-amber-600 border border-amber-500/25 hover:bg-amber-500/20">
+                Download CV
+              </Button>
+            </a>
+          )}
           {authenticated ? (
             page === 'dashboard' ? (
               <Button variant="ghost" size="sm" onClick={() => navigateTo('portfolio')}>
