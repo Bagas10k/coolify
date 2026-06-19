@@ -611,11 +611,6 @@ body {
 }
 
 /* Adjust heading padding & gaps inside portfolio */
-.portfolio-hero, .features-section, .projects-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 500px;
-}
-
 h2, h3 {
   letter-spacing: -0.015em;
 }

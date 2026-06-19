@@ -359,10 +359,10 @@ export default function Portfolio() {
         </div>
 
         {/* Experience citation card */}
-        <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-left max-w-2xl mx-auto mt-8 flex items-start gap-4">
+        <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-left max-w-2xl mx-auto mt-12 flex items-start gap-6">
           <Award className="text-amber-500 shrink-0 mt-0.5" size={28} />
           <div>
-            <h4 className="font-fun font-bold text-slate-800 text-base mb-1">Pengalaman Terverifikasi</h4>
+            <h4 className="font-fun font-bold text-slate-800 text-base mb-2">Pengalaman Terverifikasi</h4>
             <p className="text-xs text-slate-500 leading-relaxed">
               Mengerjakan video profile di UKM FTV, kolaborasi pembuatan portofolio branding bisnis produk kecil, dan mengelola server hosting mandiri untuk projek digital.
             </p>
