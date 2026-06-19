@@ -143,8 +143,8 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-12">
           {/* Bio Column */}
-          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-left">
-            <h3 className="font-fun text-xl font-bold text-slate-800 mb-3 flex items-center gap-2">
+          <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm text-left">
+            <h3 className="font-fun text-xl font-bold text-slate-800 mb-4 flex items-center gap-3">
               <GraduationCap className="text-blue-500" size={24} /> Education & Story
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -156,7 +156,7 @@ export default function Portfolio() {
           </div>
 
           {/* Skillset Column */}
-          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-left flex flex-col gap-6">
+          <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm text-left flex flex-col gap-8">
             <div>
               <h3 className="font-fun text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
                 <Terminal className="text-purple-500" size={20} /> Tech Stack & Development
@@ -194,10 +194,10 @@ export default function Portfolio() {
         </div>
 
         {/* Categories Tab Selector */}
-        <div className="flex justify-center gap-2 mb-8 flex-wrap">
+        <div className="flex justify-center gap-3 mb-10 flex-wrap">
           <button
             onClick={() => setProjectTab('web')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
+            className={`px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
               ${projectTab === 'web' 
                 ? 'bg-blue-500 border-transparent text-white shadow-md shadow-blue-100' 
                 : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
@@ -207,7 +207,7 @@ export default function Portfolio() {
           </button>
           <button
             onClick={() => setProjectTab('design')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
+            className={`px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
               ${projectTab === 'design' 
                 ? 'bg-blue-500 border-transparent text-white shadow-md shadow-blue-100' 
                 : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
@@ -217,7 +217,7 @@ export default function Portfolio() {
           </button>
           <button
             onClick={() => setProjectTab('video')}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
+            className={`px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200
               ${projectTab === 'video' 
                 ? 'bg-blue-500 border-transparent text-white shadow-md shadow-blue-100' 
                 : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
@@ -379,32 +379,32 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
           {/* Quick Links Column */}
-          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-left flex flex-col justify-between">
+          <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm text-left flex flex-col justify-between">
             <div>
-              <h3 className="font-fun text-xl font-bold text-slate-800 mb-3">Direct Channels</h3>
+              <h3 className="font-fun text-xl font-bold text-slate-800 mb-4">Direct Channels</h3>
               <p className="text-sm text-slate-500 leading-relaxed mb-6">
                 Hubungi saya langsung melalui salah satu jejaring sosial media atau nomor WhatsApp berikut. Saya siap merespon pesan Anda secepatnya.
               </p>
               
               <div className="flex flex-col gap-4">
                 <a href="https://wa.me/62812345678" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-600 hover:text-blue-500 font-semibold transition">
-                  <span className="p-2.5 rounded-xl bg-slate-50 border border-slate-100"><Phone size={18} /></span>
+                  <span className="p-3 rounded-xl bg-slate-50 border border-slate-100"><Phone size={18} /></span>
                   WhatsApp (Fast Response)
                 </a>
                 <a href="https://github.com/Bagas10k" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-600 hover:text-blue-500 font-semibold transition">
-                  <span className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="p-3 rounded-xl bg-slate-50 border border-slate-100">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   </span>
                   GitHub (Code Repositories)
                 </a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-600 hover:text-blue-500 font-semibold transition">
-                  <span className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="p-3 rounded-xl bg-slate-50 border border-slate-100">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                   </span>
                   LinkedIn (Professional Networks)
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-600 hover:text-blue-500 font-semibold transition">
-                  <span className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="p-3 rounded-xl bg-slate-50 border border-slate-100">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                   </span>
                   Instagram (Creative Feeds)
@@ -419,8 +419,8 @@ export default function Portfolio() {
           </div>
 
           {/* Form Column */}
-          <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-left">
-            <h3 className="font-fun text-xl font-bold text-slate-800 mb-3">Send a Message</h3>
+          <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm text-left">
+            <h3 className="font-fun text-xl font-bold text-slate-800 mb-4">Send a Message</h3>
             
             {formSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center p-6 text-center">
@@ -429,7 +429,7 @@ export default function Portfolio() {
                 <p className="text-xs text-slate-500">Terima kasih atas pesan Anda. Saya akan membalas secepat mungkin.</p>
               </div>
             ) : (
-              <form onSubmit={handleContactSubmit} className="flex flex-col gap-4">
+              <form onSubmit={handleContactSubmit} className="flex flex-col gap-5">
                 <Input
                   label="Name"
                   id="contact-name"
